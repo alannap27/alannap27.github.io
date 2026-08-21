@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alanna Polyak — Researcher, Advocate, Healer</title>
+  <meta name="description" content="Personal portfolio of Alanna Polyak — Dartmouth College '28, Stamps Scholar, researching at the intersection of biology, medicine, and social justice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════
+       TOKENS
+       ═══════════════════════════════════════════ */
+    :root {
+      --parchment: #F4EDE4;
+      --cream: #EBE3D7;
+      --terracotta: #B5573A;
+      --terracotta-light: #C97A62;
+      --moss: #6B7F5E;
+      --moss-light: #8FA47D;
+      --earth: #3A302A;
+      --earth-mid: #5C4F44;
+      --sage: #C8C0B0;
+      --sage-light: #DAD4C8;
+
+      --ff-display: 'Cormorant Garamond', 'Georgia', serif;
+      --ff-body: 'Source Sans 3', 'Segoe UI', sans-serif;
+
+      --fs-hero: clamp(3rem, 6vw, 4.8rem);
+      --fs-h2: clamp(1.9rem, 3vw, 2.6rem);
+      --fs-h3: clamp(1.15rem, 1.8vw, 1.4rem);
+      --fs-body: 1.05rem;
+      --fs-small: 0.92rem;
+      --fs-caption: 0.82rem;
+
+      --content-max: 860px;
+      --section-pad: clamp(4rem, 8vw, 7rem);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--ff-body);
+      font-size: var(--fs-body);
+      line-height: 1.7;
+      color: var(--earth);
+      background-color: var(--parchment);
+      overflow-x: hidden;
+    }
+
+    /* Paper grain texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.028;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    ::selection {
+      background: var(--terracotta);
+      color: var(--parchment);
+    }
+
+    a {
+      color: var(--moss);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    a:hover { color: var(--terracotta); }
+    a:focus-visible {
+      outline: 2px solid var(--terracotta);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* ═══════════════════════════════════════════
+       ORGANIC BACKGROUND SHAPES
+       ═══════════════════════════════════════════ */
+    .organic-shapes {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .organic-shapes svg {
+      position: absolute;
+    }
+
+    .blob-1 {
+      top: -8%;
+      right: -12%;
+      width: 55vw;
+      max-width: 700px;
+      opacity: 0.06;
+    }
+    .blob-2 {
+      top: 32%;
+      left: -15%;
+      width: 45vw;
+      max-width: 580px;
+      opacity: 0.05;
+    }
+    .blob-3 {
+      top: 58%;
+      right: -8%;
+      width: 38vw;
+      max-width: 500px;
+      opacity: 0.045;
+    }
+    .blob-4 {
+      bottom: -5%;
+      left: -10%;
+      width: 50vw;
+      max-width: 640px;
+      opacity: 0.05;
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244, 237, 228, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--sage-light);
+      padding: 0.85rem 2rem;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-name {
+      font-family: var(--ff-display);
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--earth);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: var(--fs-small);
+      font-weight: 600;
+      color: var(--earth-mid);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--terracotta);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--terracotta); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--earth);
+      margin: 5px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+
+    /* ═══════════════════════════════════════════
+       CONTENT WRAPPER
+       ═══════════════════════════════════════════ */
+    .content-wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-inner {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       SECTION HEADINGS
+       ═══════════════════════════════════════════ */
+    .section-heading {
+      font-family: var(--ff-display);
+      font-size: var(--fs-h2);
+      font-weight: 600;
+      color: var(--earth);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .section-rule {
+      width: 56px;
+      height: 2.5px;
+      background: var(--terracotta);
+      border: none;
+      border-radius: 2px;
+      margin-bottom: 2.2rem;
+    }
+
+    .section-intro {
+      font-size: 1.08rem;
+      color: var(--earth-mid);
+      line-height: 1.75;
+      max-width: 680px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO
+       ═══════════════════════════════════════════ */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 1.5rem 4rem;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: var(--content-max);
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ff-body);
+      font-size: var(--fs-small);
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--moss);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-name {
+      font-family: var(--ff-display);
+      font-size: var(--fs-hero);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--earth);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-rule {
+      width: 80px;
+      height: 3px;
+      background: var(--terracotta);
+      border: none;
+      border-radius: 2px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-tagline {
+      font-family: var(--ff-display);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--earth-mid);
+      line-height: 1.55;
+      max-width: 600px;
+      margin-bottom: 2.4rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-meta-item svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      color: var(--terracotta);
+    }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--sage);
+      font-size: var(--fs-caption);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: gentleBounce 2.5s ease-in-out infinite;
+    }
+
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ═══════════════════════════════════════════
+       EDUCATION SECTION
+       ═══════════════════════════════════════════ */
+    .education {
+      padding: var(--section-pad) 0;
+      background: var(--cream);
+    }
+
+    .edu-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 2rem;
+      align-items: start;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--sage-light);
+    }
+    .edu-card:last-child { border-bottom: none; }
+
+    .edu-school {
+      font-family: var(--ff-display);
+      font-size: var(--fs-h3);
+      font-weight: 600;
+      color: var(--earth);
+      line-height: 1.3;
+    }
+
+    .edu-date {
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+      white-space: nowrap;
+      padding-top: 0.15rem;
+    }
+
+    .edu-location {
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+      font-style: italic;
+      grid-column: 1 / -1;
+      margin-top: -0.2rem;
+    }
+
+    .edu-details {
+      grid-column: 1 / -1;
+      color: var(--earth-mid);
+      margin-top: 0.3rem;
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════
+       RESEARCH SECTION
+       ═══════════════════════════════════════════ */
+    .research {
+      padding: var(--section-pad) 0;
+    }
+
+    .featured-research {
+      background: var(--cream);
+      border-radius: 10px;
+      padding: 2.5rem 2.2rem;
+      margin-bottom: 3rem;
+      border-left: 4px solid var(--terracotta);
+      position: relative;
+    }
+
+    .featured-label {
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.8rem;
+    }
+
+    .featured-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+      font-weight: 600;
+      color: var(--earth);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
+    .featured-subtitle {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--earth-mid);
+      margin-bottom: 1.2rem;
+    }
+
+    .featured-body {
+      color: var(--earth-mid);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .award-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .award-tag {
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      padding: 0.3rem 0.75rem;
+      background: rgba(181, 87, 58, 0.09);
+      color: var(--terracotta);
+      border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .research-card {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 1.8rem 1.6rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .research-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(58, 48, 42, 0.08);
+    }
+
+    .research-card-date {
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      color: var(--moss);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    .research-card-title {
+      font-family: var(--ff-display);
+      font-size: var(--fs-h3);
+      font-weight: 600;
+      color: var(--earth);
+      line-height: 1.35;
+      margin-bottom: 0.3rem;
+    }
+
+    .research-card-project {
+      font-family: var(--ff-display);
+      font-size: 0.98rem;
+      font-style: italic;
+      color: var(--earth-mid);
+      margin-bottom: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .research-card-body {
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+      line-height: 1.7;
+    }
+
+    .research-card-body p + p {
+      margin-top: 0.5rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       EXPERIENCE SECTION
+       ═══════════════════════════════════════════ */
+    .experience {
+      padding: var(--section-pad) 0;
+      background: var(--cream);
+    }
+
+    .exp-entry {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 2.5rem;
+      border-left: 2px solid var(--sage-light);
+    }
+    .exp-entry:last-child { padding-bottom: 0; }
+
+    .exp-entry::before {
+      content: '';
+      position: absolute;
+      left: -5.5px;
+      top: 0.4rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--terracotta);
+    }
+
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-role {
+      font-family: var(--ff-display);
+      font-size: var(--fs-h3);
+      font-weight: 600;
+      color: var(--earth);
+      line-height: 1.3;
+    }
+
+    .exp-date {
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      color: var(--moss);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .exp-org {
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-body {
+      color: var(--earth-mid);
+      font-size: var(--fs-small);
+      line-height: 1.75;
+    }
+
+    .exp-body p + p { margin-top: 0.4rem; }
+
+    /* ═══════════════════════════════════════════
+       LEADERSHIP SECTION
+       ═══════════════════════════════════════════ */
+    .leadership {
+      padding: var(--section-pad) 0;
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .leadership-card {
+      padding: 1.6rem 1.5rem;
+      background: var(--cream);
+      border-radius: 8px;
+      transition: transform 0.25s ease;
+    }
+
+    .leadership-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .leadership-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .leadership-card-title {
+      font-family: var(--ff-display);
+      font-size: 1.18rem;
+      font-weight: 600;
+      color: var(--earth);
+      line-height: 1.3;
+    }
+
+    .leadership-card-date {
+      font-size: var(--fs-caption);
+      color: var(--moss);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .leadership-card-org {
+      font-size: var(--fs-small);
+      font-style: italic;
+      color: var(--earth-mid);
+      margin-bottom: 0.6rem;
+    }
+
+    .leadership-card-body {
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════
+       AWARDS & SKILLS SECTION
+       ═══════════════════════════════════════════ */
+    .awards-skills {
+      padding: var(--section-pad) 0;
+      background: var(--cream);
+    }
+
+    .awards-highlight {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .award-highlight-card {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      background: var(--parchment);
+      border-radius: 8px;
+    }
+
+    .award-highlight-stat {
+      font-family: var(--ff-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      line-height: 1.1;
+      margin-bottom: 0.3rem;
+    }
+
+    .award-highlight-label {
+      font-size: var(--fs-caption);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--earth-mid);
+      line-height: 1.4;
+    }
+
+    .skills-columns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-group-title {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--earth);
+      margin-bottom: 0.7rem;
+    }
+
+    .skill-group-body {
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+      line-height: 1.75;
+    }
+
+    .skill-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      list-style: none;
+    }
+
+    .skill-tag {
+      font-size: var(--fs-caption);
+      padding: 0.25rem 0.65rem;
+      background: rgba(107, 127, 94, 0.1);
+      color: var(--moss);
+      border-radius: 16px;
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ */
+    .site-footer {
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      border-top: 1px solid var(--sage-light);
+    }
+
+    .footer-name {
+      font-family: var(--ff-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--earth);
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: var(--fs-small);
+      color: var(--earth-mid);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .footer-links svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .footer-note {
+      font-size: var(--fs-caption);
+      color: var(--sage);
+    }
+
+    /* ═══════════════════════════════════════════
+       SCROLL-REVEAL ANIMATION
+       ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(244, 237, 228, 0.96);
+        backdrop-filter: blur(12px);
+        padding: 1.2rem 2rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--sage-light);
+      }
+      .nav-toggle { display: block; }
+
+      .hero { min-height: 80vh; padding-top: 5rem; }
+      .hero-scroll-hint { display: none; }
+
+      .edu-card {
+        grid-template-columns: 1fr;
+      }
+      .edu-date { order: -1; }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-research {
+        padding: 1.8rem 1.4rem;
+      }
+
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-header {
+        flex-direction: column;
+      }
+
+      .blob-1 { width: 80vw; opacity: 0.045; }
+      .blob-2 { width: 70vw; opacity: 0.035; }
+      .blob-3 { display: none; }
+      .blob-4 { width: 75vw; }
+    }
+
+    @media (max-width: 480px) {
+      .awards-highlight {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.7rem;
+      }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero-scroll-hint { animation: none; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       ORGANIC BACKGROUND SHAPES
+       ═══════════════════════════════════════════ -->
+  <div class="organic-shapes" aria-hidden="true">
+    <!-- Blob 1 — terracotta, top right (dendrite-inspired) -->
+    <svg class="blob-1" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M320 80C390 40 480 70 510 140C540 210 530 260 490 310C470 340 500 380 480 430C460 480 400 510 340 490C280 470 240 500 190 460C140 420 100 360 120 290C140 220 110 170 150 120C190 70 250 120 320 80Z" fill="#B5573A"/>
+      <path d="M350 180C380 150 430 170 440 210C450 250 420 280 440 320C460 360 430 400 390 390C350 380 310 410 290 370C270 330 280 280 310 260C340 240 320 210 350 180Z" fill="#B5573A" opacity="0.5"/>
+    </svg>
+
+    <!-- Blob 2 — moss, left mid-page -->
+    <svg class="blob-2" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M250 60C320 30 400 80 420 160C440 240 400 300 360 350C320 400 280 430 220 420C160 410 100 370 90 300C80 230 100 180 140 130C180 80 200 90 250 60Z" fill="#6B7F5E"/>
+      <path d="M200 150C240 120 290 150 300 200C310 250 280 290 240 300C200 310 160 280 160 230C160 180 170 170 200 150Z" fill="#6B7F5E" opacity="0.4"/>
+    </svg>
+
+    <!-- Blob 3 — terracotta, right lower -->
+    <svg class="blob-3" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 40C260 20 330 70 340 140C350 210 310 260 270 300C230 340 170 360 120 320C70 280 50 210 80 150C110 90 140 60 200 40Z" fill="#B5573A"/>
+    </svg>
+
+    <!-- Blob 4 — moss, bottom left -->
+    <svg class="blob-4" viewBox="0 0 550 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M280 40C350 20 440 70 470 150C500 230 470 310 410 360C350 410 260 420 190 380C120 340 70 270 80 190C90 110 210 60 280 40Z" fill="#6B7F5E"/>
+      <path d="M320 130C360 110 400 140 400 190C400 240 370 270 330 270C290 270 260 240 270 190C280 160 290 140 320 130Z" fill="#6B7F5E" opacity="0.35"/>
+    </svg>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════ -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-name">Alanna Polyak</a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" onclick="document.querySelector('.nav-links').classList.toggle('open'); this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='false')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#education">Education</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="#skills">Awards &amp; Skills</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="content-wrap">
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════ -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Dartmouth College '28 &nbsp;·&nbsp; Stamps Scholar</p>
+        <h1 class="hero-name">Alanna Polyak</h1>
+        <hr class="hero-rule">
+        <p class="hero-tagline">
+          Investigating the places where biology, medicine, and social justice converge — from stem cell neuroscience to global health equity, from the bench to the community clinic.
+        </p>
+        <div class="hero-meta">
+          <span class="hero-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+            Plano, TX &nbsp;·&nbsp; Hanover, NH
+          </span>
+          <a href="mailto:alannap27@gmail.com" class="hero-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+            alannap27@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/alanna-polyak/" class="hero-meta-item" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <svg width="18" height="24" viewBox="0 0 18 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="16" height="22" rx="8" /><line x1="9" y1="6" x2="9" y2="10"/></svg>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         EDUCATION
+         ═══════════════════════════════════════════ -->
+    <section class="education" id="education">
+      <div class="section-inner reveal">
+        <h2 class="section-heading">Education</h2>
+        <hr class="section-rule">
+
+        <div class="edu-card">
+          <div class="edu-school">Dartmouth College</div>
+          <div class="edu-date">Sept. 2024 – June 2028</div>
+          <div class="edu-location">Hanover, New Hampshire</div>
+          <div class="edu-details">
+            Human Biology Modified with Chemistry and Quantitative Social Science. Stamps Scholar — selected as one of 393 nationally from over 600,000 applicants. Engaged in multiple faculty-led and independent research initiatives bridging neuroscience, oncology, computational biology, and global health.
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-school">Plano West Senior High School &amp; Jasper High School</div>
+          <div class="edu-date">Aug. 2020 – May 2024</div>
+          <div class="edu-location">Plano, Texas</div>
+          <div class="edu-details">
+            Graduated Summa Cum Laude. SAT: 1540 / 1600. Coca-Cola Scholar (150 of 103,000+), Rise Global Winner (100 of 70,000+), ISEF First Place in Translational Medical Science, Regeneron STS Top 300 Scholar.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         RESEARCH
+         ═══════════════════════════════════════════ -->
+    <section class="research" id="research">
+      <div class="section-inner">
+        <div class="reveal">
+          <h2 class="section-heading">Research</h2>
+          <hr class="section-rule">
+          <p class="section-intro">
+            From regenerative neuroscience to cancer epidemiology and digital pathology — a thread of curiosity that follows disease across scales, from single cells to whole populations.
+          </p>
+        </div>
+
+        <!-- Featured: Stamps Scholar project -->
+        <div class="featured-research reveal">
+          <div class="featured-label">Flagship &nbsp;·&nbsp; Stamps Scholar Research</div>
+          <h3 class="featured-title">Neural Repair Driven by Planarian Stem Cells (Neoblasts) across Neurodegenerative Cell and Animal Models</h3>
+          <p class="featured-subtitle">Independent Research &nbsp;·&nbsp; Aug. 2020 – Present</p>
+          <p class="featured-body">
+            A fully funded, multi-year initiative expanding upon foundational high-school studies in neurodegeneration to investigate stem cell biology and regenerative rescue. Beginning with in vivo earthworm models, the work advanced to targeted neoblast extractions, irradiation rescue assays, and transcriptomic sequencing. Along the way, Alanna engineered custom hardware (a DIY centrifuge), developed a machine-learning program for analyzing cell viability assays, Western blots, and phenotype data, and built an independent research methodology from the ground up.
+          </p>
+          <div class="award-tags">
+            <span class="award-tag">Stamps Scholar 2026</span>
+            <span class="award-tag">ISEF 1st Place TMED</span>
+            <span class="award-tag">Regeneron STS Top 300</span>
+            <span class="award-tag">NJSHS Finalist</span>
+            <span class="award-tag">TJSHS 3rd Grand Prize</span>
+            <span class="award-tag">Coca-Cola Scholar</span>
+          </div>
+        </div>
+
+        <!-- Research grid -->
+        <div class="research-grid">
+
+          <div class="research-card reveal">
+            <div class="research-card-date">Mar. 2026 – Present</div>
+            <h3 class="research-card-title">Clinical Oncology Research</h3>
+            <p class="research-card-project">"Investigating Clinical Outcomes and Demographic Barriers in Primary Glioma"</p>
+            <div class="research-card-body">
+              <p>Analyzing large-scale national cancer databases to investigate clinical outcomes and treatment adoption for primary gliomas. Evaluating therapeutic sequencing and research feasibility by extracting spatial and socioeconomic data to assess demographic barriers in radiotherapy and oncological care.</p>
+            </div>
+          </div>
+
+          <div class="research-card reveal">
+            <div class="research-card-date">Sept. 2025 – Present</div>
+            <h3 class="research-card-title">Computational Biology Research</h3>
+            <p class="research-card-project">"Modeling Evolutionary Amoeba Dynamics for Mathematical Modeling" &amp; "Pharmaceutical Industry Ethics in a Game Theory Perspective"</p>
+            <div class="research-card-body">
+              <p>Developing evolutionary game theory models in Python to simulate cell fate transitions and cell cycle modulations. Analyzing pharma dynamics by modeling R&amp;D costs, regulations, and ethical clinical trial practices — manuscript in progress.</p>
+            </div>
+          </div>
+
+          <div class="research-card reveal">
+            <div class="research-card-date">Oct. 2024 – Present</div>
+            <h3 class="research-card-title">PixCell via Dartmouth Health — Tanzania Project</h3>
+            <p class="research-card-project">SmartScope Impact on Pathology Diagnostics</p>
+            <div class="research-card-body">
+              <p>Co-designing a prospective study on SmartScope's impact on pathology diagnostics in Tanzania, aiming to enhance diagnostic accuracy, efficiency, and accessibility. Defined key metrics, developed study protocols, and conducted literature reviews on global health and digital pathology.</p>
+            </div>
+          </div>
+
+          <div class="research-card reveal">
+            <div class="research-card-date">May – Sept. 2025</div>
+            <h3 class="research-card-title">UTSW Laboratory — Neuroimmunology</h3>
+            <p class="research-card-project">"Leptin as an Immunomodulator of Multiple Sclerosis"</p>
+            <div class="research-card-body">
+              <p>Reviewed mouse MRI data on the choroid plexus for MS comparison. Publication as third author investigating leptin's effect on neurodegenerative conditions and immune cells.</p>
+            </div>
+          </div>
+
+          <div class="research-card reveal">
+            <div class="research-card-date">May – Sept. 2025</div>
+            <h3 class="research-card-title">UTSW Laboratory — Cancer Biology</h3>
+            <p class="research-card-project">"Investigating a Kinase-Independent Mechanism for CK1α through PROTACS and Kinase Inhibitors"</p>
+            <div class="research-card-body">
+              <p>Solo project confirming and expanding earlier findings to discover a new pathway possibility. Completed independent cell culture training and presented a poster at the American Association for Cancer Research conference.</p>
+            </div>
+          </div>
+
+          <div class="research-card reveal">
+            <div class="research-card-date">May 2023 – Aug. 2024</div>
+            <h3 class="research-card-title">UTSW Laboratory — Breast Cancer</h3>
+            <p class="research-card-project">"Investigating the Addition of Trastuzumab to Neratinib and Fulvestrant in ER+/HER2-Mutant Breast Cancer Cells"</p>
+            <div class="research-card-body">
+              <p>Developed and edited a summary poster of final experimental results. Continued research beyond program completion, contributing to ongoing investigation of double HER2-mutation therapy strategies.</p>
+            </div>
+          </div>
+
+          <div class="research-card reveal">
+            <div class="research-card-date">Jan. 2025 – Present</div>
+            <h3 class="research-card-title">Self-Guided Geographical &amp; Sociological Research</h3>
+            <p class="research-card-project">Children's Sexual Assault across Global Regions</p>
+            <div class="research-card-body">
+              <p>Independent research examining geographic and sociological dimensions of child sexual assault across global regions, connecting quantitative social science methods to advocacy work.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         EXPERIENCE
+         ═══════════════════════════════════════════ -->
+    <section class="experience" id="experience">
+      <div class="section-inner">
+        <div class="reveal">
+          <h2 class="section-heading">Experience</h2>
+          <hr class="section-rule">
+          <p class="section-intro">
+            Clinical care, nonprofit strategy, and health education — each role shaped by a commitment to closing the gap between people and the care they need.
+          </p>
+        </div>
+
+        <div class="reveal">
+          <div class="exp-entry">
+            <div class="exp-header">
+              <span class="exp-role">Chief Development Strategist for Funding &amp; Pediatric Initiatives</span>
+              <span class="exp-date">Oct. 2024 – Present</span>
+            </div>
+            <div class="exp-org">PixCell via Dartmouth Health</div>
+            <div class="exp-body">
+              <p>Spearheading fundraising strategies and grant acquisition to support pediatric healthcare initiatives. Developing and maintaining relationships with donors, healthcare organizations, and philanthropic partners to secure funding for critical programs.</p>
+            </div>
+          </div>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <span class="exp-role">Clinical Lead — Subspecialty Clinic for Disadvantaged Populations</span>
+              <span class="exp-date">July 2021 – Present</span>
+            </div>
+            <div class="exp-org">Volunteer Clinic</div>
+            <div class="exp-body">
+              <p>Directing daily clinic operations and managing a team of volunteers to provide accessible, high-quality healthcare to underserved communities. Coordinating interdisciplinary care across plastic surgery, radiology, physical therapy, neurology, and psychiatry. Performing medical assistant duties including patient triage, vitals, and preparation for specialized procedures.</p>
+            </div>
+          </div>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <span class="exp-role">Strategy Director</span>
+              <span class="exp-date">June 2020 – Present</span>
+            </div>
+            <div class="exp-org">iCure Health</div>
+            <div class="exp-body">
+              <p>Created an internship program that expanded nonprofit outreach by over 20,000 individuals. Published in the magazine's first edition, which has received over 30,000 views.</p>
+            </div>
+          </div>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <span class="exp-role">Learning Fellow</span>
+              <span class="exp-date">Mar. – June 2025</span>
+            </div>
+            <div class="exp-org">Dartmouth College</div>
+            <div class="exp-body">
+              <p>Facilitated active learning and collaboration as a TA, guiding students through class sessions without providing direct answers — forming groups, prompting inquiry, and supporting peer-driven discovery.</p>
+            </div>
+          </div>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <span class="exp-role">Medical Receptionist</span>
+              <span class="exp-date">July 2021 – Aug. 2024</span>
+            </div>
+            <div class="exp-org">Atlas Rehab &amp; Wellness</div>
+            <div class="exp-body">
+              <p>Welcomed patients in person and by phone, scheduling appointments and providing clinical support. Maintained, updated, and added to over 5,000 patient records.</p>
+            </div>
+          </div>
+
+          <div class="exp-entry">
+            <div class="exp-header">
+              <span class="exp-role">Medical Shadowing</span>
+              <span class="exp-date">Sept. 2020 – Present</span>
+            </div>
+            <div class="exp-org">Various Specialties</div>
+            <div class="exp-body">
+              <p>Shadowed across neurology, radiation oncology, physical therapy, plastic surgery, anesthesiology, cardiology, pediatrics, family medicine, and other specialties to explore clinical interests and deepen patient interaction skills.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         LEADERSHIP & ADVOCACY
+         ═══════════════════════════════════════════ -->
+    <section class="leadership" id="leadership">
+      <div class="section-inner">
+        <div class="reveal">
+          <h2 class="section-heading">Leadership &amp; Advocacy</h2>
+          <hr class="section-rule">
+        </div>
+
+        <div class="leadership-grid">
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Student EMT</span>
+              <span class="leadership-card-date">Sept. 2024 – Present</span>
+            </div>
+            <div class="leadership-card-org">Dartmouth EMS</div>
+            <div class="leadership-card-body">
+              Providing emergency medical care during night shifts, responding to on-campus emergencies, collaborating with campus safety and local EMS, and educating the community on harm reduction, alcohol safety, and CPR.
+            </div>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Incoming Summer Co-President</span>
+              <span class="leadership-card-date">Jan. 2025 – Present</span>
+            </div>
+            <div class="leadership-card-org">Dartmouth Student &amp; Presidential Committee on Sexual Assault</div>
+            <div class="leadership-card-body">
+              Directing strategic planning and overseeing cross-campus prevention initiatives. Planning Sexual Assault Action Month programming and facilitating Elizabeth A. Hoffman Research Grants for student-led research.
+            </div>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Peer Supporter</span>
+              <span class="leadership-card-date">Feb. 2025 – Present</span>
+            </div>
+            <div class="leadership-card-org">Dartmouth Sexual Assault Peer Alliance</div>
+            <div class="leadership-card-body">
+              Providing trauma-informed, empowerment-based peer support to individuals impacted by sexual and gender-based violence. Completing a 40-hour training program endorsed by the Dartmouth Counseling Center.
+            </div>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Youth Coordinator</span>
+              <span class="leadership-card-date">Aug. 2020 – Present</span>
+            </div>
+            <div class="leadership-card-org">Children's Hospital Program</div>
+            <div class="leadership-card-body">
+              Developed an abuse-informative program aimed at helping children in unsafe situations. Expanded to over 1,000 volunteers and 230+ children reached. Built a specialized gym-outreach program and engaged Texas state representatives regarding legislation.
+            </div>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Camp Counselor</span>
+              <span class="leadership-card-date">June 2021 – Present</span>
+            </div>
+            <div class="leadership-card-org">Epilepsy Foundation</div>
+            <div class="leadership-card-body">
+              Caring for and leading activities for 20 campers with epilepsy in both in-person and virtual settings each summer.
+            </div>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Youth Leader</span>
+              <span class="leadership-card-date">Aug. 2022 – Present</span>
+            </div>
+            <div class="leadership-card-org">One Love Foundation</div>
+            <div class="leadership-card-body">
+              Educating over 10,000 students on healthy relationships through webinars, workshops, and community engagement programming.
+            </div>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Youth Partner</span>
+              <span class="leadership-card-date">May 2020 – Present</span>
+            </div>
+            <div class="leadership-card-org">Accelerated Cure Project for MS</div>
+            <div class="leadership-card-body">
+              First youth leader to develop a student outreach program. Helped organize a $10,000 fundraiser for multiple sclerosis awareness.
+            </div>
+          </div>
+
+          <div class="leadership-card reveal">
+            <div class="leadership-card-header">
+              <span class="leadership-card-title">Advisory Board Member</span>
+              <span class="leadership-card-date">Jan. 2025 – Present</span>
+            </div>
+            <div class="leadership-card-org">Dartmouth Student Advisory Board — Sexual Violence Prevention</div>
+            <div class="leadership-card-body">
+              Helping shape the mandatory Sexual Violence Prevention Project by representing and interviewing peers, informing focus groups and program pilots.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         AWARDS & SKILLS
+         ═══════════════════════════════════════════ -->
+    <section class="awards-skills" id="skills">
+      <div class="section-inner">
+        <div class="reveal">
+          <h2 class="section-heading">Awards &amp; Skills</h2>
+          <hr class="section-rule">
+        </div>
+
+        <div class="awards-highlight reveal">
+          <div class="award-highlight-card">
+            <div class="award-highlight-stat">Stamps Scholar</div>
+            <div class="award-highlight-label">393 of 600,000+<br>nationally (2026)</div>
+          </div>
+          <div class="award-highlight-card">
+            <div class="award-highlight-stat">Coca-Cola Scholar</div>
+            <div class="award-highlight-label">150 of 103,000+<br>(2024)</div>
+          </div>
+          <div class="award-highlight-card">
+            <div class="award-highlight-stat">Rise Global</div>
+            <div class="award-highlight-label">100 of 70,000+<br>(2023)</div>
+          </div>
+          <div class="award-highlight-card">
+            <div class="award-highlight-stat">ISEF 1st Place</div>
+            <div class="award-highlight-label">Translational Medical<br>Science (2023)</div>
+          </div>
+          <div class="award-highlight-card">
+            <div class="award-highlight-stat">Regeneron STS</div>
+            <div class="award-highlight-label">Top 300 Scholar</div>
+          </div>
+        </div>
+
+        <div class="skills-columns reveal">
+
+          <div>
+            <h3 class="skill-group-title">Research Techniques</h3>
+            <ul class="skill-tag-list">
+              <li class="skill-tag">Cell Culture</li>
+              <li class="skill-tag">Western Blotting</li>
+              <li class="skill-tag">MTT Assay</li>
+              <li class="skill-tag">Cell Titer-Glo</li>
+              <li class="skill-tag">Incucyte Analysis</li>
+              <li class="skill-tag">Combustion Synthesis</li>
+              <li class="skill-tag">Titration</li>
+              <li class="skill-tag">Phenotyping</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="skill-group-title">Computation</h3>
+            <ul class="skill-tag-list">
+              <li class="skill-tag">Python</li>
+              <li class="skill-tag">R</li>
+              <li class="skill-tag">JavaScript</li>
+              <li class="skill-tag">Machine Learning</li>
+              <li class="skill-tag">Microsoft Office Specialist</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="skill-group-title">Certifications</h3>
+            <ul class="skill-tag-list">
+              <li class="skill-tag">NREMT (Pending)</li>
+              <li class="skill-tag">AHA CPR &amp; First Aid</li>
+              <li class="skill-tag">Pedagogy Training</li>
+              <li class="skill-tag">ACS Safety</li>
+              <li class="skill-tag">Seizure First Aid</li>
+              <li class="skill-tag">One Love Coordinator</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="skill-group-title">Languages</h3>
+            <p class="skill-group-body">
+              English (fluent), Russian (professional working proficiency), Spanish (limited working proficiency), Latin (limited working proficiency).
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="footer-name">Alanna Polyak</div>
+    <ul class="footer-links">
+      <li>
+        <a href="mailto:alannap27@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+          Email
+        </a>
+      </li>
+      <li>
+        <a href="mailto:alanna.g.polyak.28@dartmouth.edu">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+          Dartmouth
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/in/alanna-polyak/" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </li>
+    </ul>
+    <p class="footer-note">Plano, Texas &nbsp;·&nbsp; Hanover, New Hampshire</p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════
+       SCROLL REVEAL SCRIPT
+       ═══════════════════════════════════════════ -->
+  <script>
+    // Intersection Observer for scroll-reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealElements.forEach((el) => observer.observe(el));
+    } else {
+      // Fallback: show everything
+      revealElements.forEach((el) => el.classList.add('visible'));
+    }
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.nav-links a').forEach((link) => {
+      link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+        document.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
